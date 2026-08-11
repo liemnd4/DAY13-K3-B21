@@ -31,10 +31,16 @@
 
 ## 5. Dashboard, SLO và alerts
 
-- Kết quả `validate_dashboard.py`:
-- Evidence dashboard:
+- Kết quả `validate_dashboard.py`: HỢP LỆ: 6/6 panel có trong dashboard contract. Evidence: `submission/evidence/dashboard-validator.txt`.
+- Evidence dashboard: `submission/evidence/dashboard.png` (chụp sau khi chạy load test; không tạo evidence giả).
 - SLO đã chọn và lý do:
+  - **SLO Latency**: P95 latency ≤ 3000 ms trong cửa sổ quan sát; mục tiêu tối thiểu 95% request đáp ứng trong 3000 ms.
+  - **SLO Error Rate**: Tỷ lệ lỗi toàn hệ thống ≤ 2%, tương đương tối thiểu 98% request thành công.
 - Alert rules và runbook:
+  - `HighLatencyP95`: P95 > 3000 ms trong 3 phút, severity warning.
+  - `HighErrorRate`: error rate > 2% trong 5 phút, severity critical.
+  - `LowQualityScore`: mean quality < 0.75 trong 10 phút, severity warning.
+  - Runbook đầy đủ: `docs/alerts.md`, theo luồng Metrics → Traces → Logs.
 
 ## 6. Điều tra challenge
 

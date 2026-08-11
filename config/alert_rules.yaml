@@ -1,19 +1,28 @@
 alerts:
-  - name: TODO_alert_1
-    severity: TODO
-    condition: TODO
+  - name: HighLatencyP95
+    severity: warning
+    sli: latency_p95_ms
+    condition: p95(latency_ms) > 3000
+    for: 3m
     type: symptom-based
-    owner: TODO
-    runbook: docs/alerts.md#alert-1
-  - name: TODO_alert_2
-    severity: TODO
-    condition: TODO
+    owner: platform-oncall
+    user_impact: Users wait longer than the latency SLO for AI responses.
+    runbook: docs/alerts.md#alert-1-high-latency-p95
+  - name: HighErrorRate
+    severity: critical
+    sli: error_rate_pct
+    condition: request_failed / request_received * 100 > 2
+    for: 5m
     type: symptom-based
-    owner: TODO
-    runbook: docs/alerts.md#alert-2
-  - name: TODO_alert_3
-    severity: TODO
-    condition: TODO
+    owner: service-oncall
+    user_impact: More than 2% of user requests fail.
+    runbook: docs/alerts.md#alert-2-high-error-rate
+  - name: LowQualityScore
+    severity: warning
+    sli: quality_score_avg
+    condition: mean(quality_score) < 0.75
+    for: 10m
     type: symptom-based
-    owner: TODO
-    runbook: docs/alerts.md#alert-3
+    owner: ai-oncall
+    user_impact: AI responses may be less useful even when requests succeed.
+    runbook: docs/alerts.md#alert-3-low-quality-score

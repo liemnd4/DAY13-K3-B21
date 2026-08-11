@@ -29,6 +29,14 @@ Giữ time range mặc định 60 phút, refresh 30 giây và hiển thị thres
 python scripts/validate_dashboard.py
 ```
 
+Dashboard Streamlit của nhóm chạy bằng:
+
+```bash
+streamlit run scripts/dashboard.py
+```
+
+Giao diện mặc định dùng cửa sổ 60 phút, tự refresh mỗi 30 giây và đọc threshold trực tiếp từ `config/dashboard.yaml`.
+
 Validator kiểm tra cấu trúc contract; nó không thể chứng minh biểu đồ trong ảnh dùng đúng dữ liệu. Evidence runtime vẫn bắt buộc.
 
 ## Cách kiểm tra runtime
