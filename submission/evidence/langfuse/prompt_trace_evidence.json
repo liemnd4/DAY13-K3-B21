@@ -1,0 +1,39 @@
+{
+  "prompt_name": "day13-chat",
+  "versions": {
+    "baseline": 1,
+    "candidate": 2
+  },
+  "traces": {
+    "baseline": {
+      "prompt_name": "day13-chat",
+      "prompt_label": "baseline",
+      "prompt_version": 1,
+      "prompt_source": "langfuse",
+      "trace_id": "e3cdf055b491c9a3725692ce77668935",
+      "trace_url": "https://cloud.langfuse.com/project/cmso2cgzm03tsad0c0o865ovm/traces/e3cdf055b491c9a3725692ce77668935"
+    },
+    "candidate": {
+      "prompt_name": "day13-chat",
+      "prompt_label": "candidate",
+      "prompt_version": 2,
+      "prompt_source": "langfuse",
+      "trace_id": "f2e50462fb347c80f9507dc73a5872a4",
+      "trace_url": "https://cloud.langfuse.com/project/cmso2cgzm03tsad0c0o865ovm/traces/f2e50462fb347c80f9507dc73a5872a4"
+    },
+    "production_v2": {
+      "prompt_name": "day13-chat",
+      "prompt_label": "production",
+      "prompt_version": 2,
+      "prompt_source": "langfuse",
+      "trace_id": "bd0bb609190de1dc69413125dc1b6975",
+      "trace_url": "https://cloud.langfuse.com/project/cmso2cgzm03tsad0c0o865ovm/traces/bd0bb609190de1dc69413125dc1b6975"
+    }
+  },
+  "promotion": {
+    "promoted_version": 2
+  },
+  "rollback": {
+    "rollback_version": 1
+  }
+}
