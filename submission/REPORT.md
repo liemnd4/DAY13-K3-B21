@@ -10,7 +10,7 @@
 ## 2. Kết quả kỹ thuật
 
 - Điểm `validate_logs.py`: 100/100
-- Tổng số traces:
+- Tổng số traces: 13 traces mới trong lần chạy CP2 gần nhất (10 load-test và 3 prompt-version); evidence: `submission/evidence/langfuse/trace-list.txt`.
 - Số PII leak còn lại: 0
 - Link/đường dẫn dashboard:
 
@@ -24,13 +24,13 @@
 ## 4. Prompt versioning
 
 - Prompt name: `day13-chat`
-- Version/label baseline: version 1, labels `baseline` và `production` sau rollback
-- Version/label candidate: version 2, label `candidate`
+- Version/label baseline: version 5, labels `baseline` và `production` sau rollback
+- Version/label candidate: version 6, label `candidate`
 - Trace ID của mỗi version:
-  - baseline/v1: `e3cdf055b491c9a3725692ce77668935`
-  - candidate/v2: `f2e50462fb347c80f9507dc73a5872a4`
-  - production/v2 trước rollback: `bd0bb609190de1dc69413125dc1b6975`
-- Bằng chứng đổi label hoặc rollback: `submission/evidence/langfuse/prompt_trace_evidence.json`; production được promote sang v2 và rollback về v1, đã xác minh lại từ Langfuse.
+  - baseline/v5: `1711969e11f142e8cc7b1beb72de8a23`
+  - candidate/v6: `c5845f99ff771be61e7c302335ec5c9a`
+  - production/v6 trước rollback: `1bc0ba2bebf726cedc5c162902fbe625`
+- Bằng chứng đổi label hoặc rollback: `submission/evidence/langfuse/prompt_trace_evidence.json`; production được promote sang v6 và rollback về v5, đã xác minh lại từ Langfuse.
 
 ## 5. Dashboard, SLO và alerts
 

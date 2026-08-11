@@ -82,7 +82,32 @@ def compact_chart(fig, *, percent: bool = False) -> None:
         hovermode="x unified",
         font=dict(size=11),
     )
-    fig.update_xaxes(title=None, gridcolor="rgba(128,128,128,.12)")
+    fig.update_xaxes(
+        title=None,
+        gridcolor="rgba(128,128,128,.12)",
+        tickformat="%H:%M",
+        hoverformat="%Y-%m-%d %H:%M:%S",
+        nticks=6,
+    )
+
+    # Plotly zooms into microseconds when a time series contains one bucket.
+    # Give that point a readable one-minute range and render a single HH:MM tick.
+    x_values = [
+        value
+        for trace in fig.data
+        for value in (list(trace.x) if getattr(trace, "x", None) is not None else [])
+    ]
+    timestamps = pd.to_datetime(x_values, utc=True, errors="coerce")
+    timestamps = timestamps[~pd.isna(timestamps)]
+    unique_timestamps = timestamps.unique()
+    if len(unique_timestamps) == 1:
+        point = pd.Timestamp(unique_timestamps[0])
+        fig.update_xaxes(
+            range=[point - pd.Timedelta(seconds=30), point + pd.Timedelta(seconds=30)],
+            tickmode="array",
+            tickvals=[point],
+            ticktext=[point.strftime("%H:%M")],
+        )
     fig.update_yaxes(title=None, gridcolor="rgba(128,128,128,.12)")
     if percent:
         fig.update_yaxes(ticksuffix="%")
@@ -232,8 +257,15 @@ with row2_left:
         heading("Errors", f"{error_rate:.2f}% error rate · {error_count} failures · SLO ≤ 2%")
         if not requests.empty:
             req_by_minute = requests.groupby("minute").size().rename("requests")
-            err_by_minute = failures.groupby("minute").size().rename("errors") if not failures.empty else pd.Series(dtype=float)
-            errors = pd.concat([req_by_minute, err_by_minute], axis=1).fillna(0)
+            errors = req_by_minute.to_frame()
+            if failures.empty:
+                errors["errors"] = 0
+            else:
+                errors["errors"] = (
+                    failures.groupby("minute")
+                    .size()
+                    .reindex(errors.index, fill_value=0)
+                )
             errors["Error rate (%)"] = errors["errors"] / errors["requests"] * 100
             errors = errors.reset_index()
             fig = px.line(errors, x="minute", y="Error rate (%)", markers=True)
