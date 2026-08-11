@@ -1,0 +1,11 @@
+Command: python -m pytest tests/test_logging_security.py tests/test_pii.py -v
+
+Collected 5 tests
+
+tests/test_logging_security.py::test_structlog_scrubs_top_level_and_nested_pii_before_jsonl_persistence PASSED
+tests/test_pii.py::test_scrub_email PASSED
+tests/test_pii.py::test_scrub_common_vietnamese_phone_formats PASSED
+tests/test_pii.py::test_scrub_all_configured_identity_and_payment_patterns PASSED
+tests/test_pii.py::test_scrub_value_recurses_without_changing_structure_or_non_strings PASSED
+
+5 passed
