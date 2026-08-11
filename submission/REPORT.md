@@ -9,25 +9,28 @@
 
 ## 2. Kết quả kỹ thuật
 
-- Điểm `validate_logs.py`:
+- Điểm `validate_logs.py`: 100/100
 - Tổng số traces:
-- Số PII leak còn lại:
+- Số PII leak còn lại: 0
 - Link/đường dẫn dashboard:
 
 ## 3. Logging và tracing
 
-- Evidence correlation ID:
-- Evidence PII redaction:
+- Evidence correlation ID: `submission/evidence/validate_logs.txt` (10 correlation IDs duy nhất)
+- Evidence PII redaction: `submission/evidence/pytest_pii.txt` và `submission/evidence/validate_logs.txt`
 - Evidence trace waterfall:
 - Giải thích một span đáng chú ý:
 
 ## 4. Prompt versioning
 
-- Prompt name:
-- Version/label baseline:
-- Version/label candidate:
+- Prompt name: `day13-chat`
+- Version/label baseline: version 1, labels `baseline` và `production` sau rollback
+- Version/label candidate: version 2, label `candidate`
 - Trace ID của mỗi version:
-- Bằng chứng đổi label hoặc rollback:
+  - baseline/v1: `e3cdf055b491c9a3725692ce77668935`
+  - candidate/v2: `f2e50462fb347c80f9507dc73a5872a4`
+  - production/v2 trước rollback: `bd0bb609190de1dc69413125dc1b6975`
+- Bằng chứng đổi label hoặc rollback: `submission/evidence/langfuse/prompt_trace_evidence.json`; production được promote sang v2 và rollback về v1, đã xác minh lại từ Langfuse.
 
 ## 5. Dashboard, SLO và alerts
 

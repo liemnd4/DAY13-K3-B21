@@ -1,0 +1,4 @@
+Command: python -m pytest -q
+
+..............................                                           [100%]
+30 passed, 2 FastAPI on_event deprecation warnings in 2.46s
