@@ -2,15 +2,22 @@ service: day13-observability-lab
 window: 28d
 slis:
   latency_p95_ms:
+    indicator: response_sent.latency_ms
+    aggregation: p95
     objective: 3000
-    target: 99.5
-    note: Replace with your group's target
+    operator: lte
+    target_percent: 95.0
+    description: At least 95% of requests complete within 3000 ms.
   error_rate_pct:
+    indicator: request_failed / request_received * 100
     objective: 2
-    target: 99.0
-  daily_cost_usd:
+    operator: lte
+    target_percent: 98.0
+    description: Successful requests remain at or above 98%.
+guardrails:
+  window_cost_usd:
     objective: 2.5
-    target: 100.0
+    operator: lte
   quality_score_avg:
     objective: 0.75
-    target: 95.0
+    operator: gte
