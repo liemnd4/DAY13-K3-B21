@@ -63,7 +63,7 @@
 
 | Thành viên | Phần việc | Commit/PR | Điều đã học |
 |---|---|---|---|
-| Nguyễn Văn Hưng - 01251 | Logging, PII Redaction & Correlation ID | Main Branch | Biết cách che PII bằng Regex và truyền correlation ID qua structlog |
-| Nguyễn Đình Liêm - 01421 | Tracing & Prompt Versioning | Main Branch | Quản lý prompt managed trên Langfuse và thử nghiệm rollback phiên bản |
-| Đỗ Trung Kiên - 01287 | Dashboard Contract, SLO & Alerts | Main Branch | Xây dựng 6 nhóm chỉ số giám sát và thiết lập ngưỡng Alert |
-| Nguyễn Hồng Yến - 01065 | Challenge Investigation, Report & Demo | Main Branch | Nối mạch suy luận Metrics -> Traces -> Logs để tìm Root Cause |
+| Nguyễn Văn Hưng - 01251 | Logging, PII Redaction & Correlation ID | Branch `checkpoint-1-logging-pii` | Biết cách che PII bằng Regex và truyền correlation ID qua structlog |
+| Nguyễn Đình Liêm - 01421 | Tracing & Prompt Versioning | Branch `feature/security-prompt-evidence` | Quản lý prompt managed trên Langfuse và thử nghiệm rollback phiên bản |
+| Đỗ Trung Kiên - 01287 | Dashboard Contract, SLO & Alerts | Branch `feat-dashboard-slo-alert` | Xây dựng 6 nhóm chỉ số giám sát và thiết lập ngưỡng Alert |
+| Nguyễn Hồng Yến - 01065 | Challenge Investigation, Report & Demo | Branch `feature/incident-investigation-report` | Nối mạch suy luận Metrics -> Traces -> Logs để tìm Root Cause |
